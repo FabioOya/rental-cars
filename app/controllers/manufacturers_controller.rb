@@ -6,9 +6,15 @@ class ManufacturersController < ApplicationController
   def show
     id = params[:id]
     @manufacturer = Manufacturer.find(id)
-    if @manufacturer.id = nil
-        flash[:alert] = 'Nenhum fabricante cadastrado'
-        render :new
-    end
+  end
+
+  def new
+    @manufacturer = Manufacturer.new
+  end
+  
+  def create
+    @manufacturer = Manufacturer.new(params.require(:manufacturer).permit(:name))
+    @manufacturer.save
+    redirect_to manufacturer_path(Manufacturer.last.id)
   end
 end
