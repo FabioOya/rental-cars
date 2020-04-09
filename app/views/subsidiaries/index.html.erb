@@ -1,0 +1,11 @@
+<h1>Filiais</h1>
+<% if Subsidiary.count == 0 %>
+    <p> Nenhuma filial cadastrada <p>
+<% end %>
+<ul>
+  <% @subsidiaries.each do |s| %>
+    <li><%= link_to s.name, subsidiary_path(id: s.id) %></li>
+  <% end %>
+</ul>
+<%= link_to 'Voltar', root_path %>
+<%= link_to 'Registrar filial', new_subsidiary_path %>

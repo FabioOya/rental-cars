@@ -4,5 +4,6 @@ Rails.application.routes.draw do
   resources :manufacturers, only: [:index, :show, :new, :create]
   resources :customers
   resources :car_categories
+  resources :subsidiaries
 
 end
