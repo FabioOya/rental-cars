@@ -1,4 +1,7 @@
 <h1>Fabricantes</h1>
+
+<%= link_to 'Registrar novo fabricante', new_manufacturer_path %>
+
 <% if Manufacturer.count == 0 %>
   <p> Nenhum fabricante cadastrado <p>
 <% end %>
@@ -8,4 +11,3 @@
   <% end %>
 </ul>
 <%= link_to 'Voltar', root_path %>
-<%= link_to 'Registrar novo fabricante', new_manufacturer_path %>
