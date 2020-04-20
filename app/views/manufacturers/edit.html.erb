@@ -4,7 +4,7 @@
   <p><%= message %></p>
 <% end %>
 
-<%= form_for @manufacturer do |m| %>
+<%= form_with(model: @manufacturer, local: true) do |m| %>
   <%= m.label :name, 'Nome' %>
   <%= m.text_field :name %>
   <%= m.submit 'Enviar' %>

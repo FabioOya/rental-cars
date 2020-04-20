@@ -16,4 +16,5 @@ class CarCategoriesController < ApplicationController
     @car_category.save
     redirect_to car_category_path(CarCategory.last.id)
   end
+
 end
