@@ -1,4 +1,6 @@
 class ManufacturersController < ApplicationController
+  #before_action :set_manufacturer, only [:]
+
   def index
     @manufacturers = Manufacturer.all  
   end
@@ -15,6 +17,7 @@ class ManufacturersController < ApplicationController
   def create
     @manufacturer = Manufacturer.new(manufacturer_params)
     if @manufacturer.save
+      flash[:notice] = 'Fabricante criado com sucesso'
       redirect_to @manufacturer
     else
       render :new
@@ -45,6 +48,7 @@ class ManufacturersController < ApplicationController
   def set_manufacturer
     @manufacturer = Manufacturer.find(params[:id])
   end
+
   def manufacturer_params
     params.require(:manufacturer).permit(:name)
   end

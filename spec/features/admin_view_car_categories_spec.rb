@@ -20,10 +20,15 @@ feature 'Admin view car categories' do
     click_on 'Categorias de carros'
     click_on 'Compactos'
 
+    expect(page).to have_css('header h1', text: 'Compactos')
     expect(page).to have_content('Compactos')
+    #expect(page).to have_content 'Díaria: R$ 200,00'
     expect(page).to have_content(200)
+    #expect(page).to have_content 'Seguro do Carro: R$ 100,50'
     expect(page).to have_content(100.50)
+    #expect(page).to have_content 'Seguro para Terceiros: R$ 120,00'
     expect(page).to have_content(120)
+    #expect(page).to have_content 'Seguro do Carro: R$ 120,00'
     expect(page).not_to have_content('Familia')
     expect(page).not_to have_content(300)
     expect(page).not_to have_content(150)
