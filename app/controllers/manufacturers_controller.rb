@@ -27,7 +27,7 @@ class ManufacturersController < ApplicationController
   def edit
     @manufacturer = Manufacturer.find(params[:id])
   end
-
+  # PATCH ou PUT
   def update
     @manufacturer = Manufacturer.find(params[:id])
     if @manufacturer.update(manufacturer_params)

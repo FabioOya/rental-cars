@@ -2,10 +2,14 @@
 <% if CarCategory.count == 0 %>
   <p> Nenhuma categoria cadastrada <p>
 <% end %>
-<ul>
-  <% @car_categories.each do |c| %>
-    <li><%= link_to c.name, car_category_path(id: c.id) %></li>
-  <% end %>
-</ul>
+<% @car_categories.each do |c| %>
+  <div>
+    <h2><%= link_to "Categoria #{c.name}", c %></h2>
+    <dl>
+      <dt>Valor da Diária</dt>
+      <dd><%= number_to_currency c.daily_rate%></dd>
+    </dl>
+  </div>
+<% end %>
 <%= link_to 'Voltar', root_path %>
 <%= link_to 'Registrar categoria', new_car_category_path %>

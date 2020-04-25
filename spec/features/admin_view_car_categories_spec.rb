@@ -2,36 +2,41 @@ require 'rails_helper'
 
 feature 'Admin view car categories' do
   scenario 'succesfully' do
-    CarCategory.create!(name: 'Compactos', daily_rate: 200, car_insurance: 100.50, third_party_insurance: 120)
-    CarCategory.create!(name: 'Familia', daily_rate: 300, car_insurance: 150, third_party_insurance: 120)
+    # Arrange
+
+    CarCategory.create!(name: 'A', daily_rate: 50)
+    CarCategory.create!(name: 'B', daily_rate: 70)
+    # Act
 
     visit root_path
     click_on 'Categorias de carros'
 
-    expect(page).to have_content('Compactos')
-    expect(page).to have_content('Familia')
+    # Assert
+
+    expect(page).to have_content 'Categoria A'
+    expect(page).to have_content 'R$ 50,00'
+
+    expect(page).to have_content 'Categoria B'
+    expect(page).to have_content 'R$ 70,00'
   end
 
   scenario 'and view details' do
-    CarCategory.create!(name: 'Compactos', daily_rate: 200, car_insurance: 100.50, third_party_insurance: 120)
-    CarCategory.create!(name: 'Familia', daily_rate: 300, car_insurance: 150, third_party_insurance: 120)
+    CarCategory.create!(name: 'A', daily_rate: 200, car_insurance: 100.50, third_party_insurance: 120)
+    CarCategory.create!(name: 'B', daily_rate: 300, car_insurance: 150, third_party_insurance: 120)
 
     visit root_path
     click_on 'Categorias de carros'
-    click_on 'Compactos'
+    click_on 'Categoria A'
 
-    expect(page).to have_css('header h1', text: 'Compactos')
-    expect(page).to have_content('Compactos')
-    #expect(page).to have_content 'Díaria: R$ 200,00'
-    expect(page).to have_content(200)
-    #expect(page).to have_content 'Seguro do Carro: R$ 100,50'
-    expect(page).to have_content(100.50)
-    #expect(page).to have_content 'Seguro para Terceiros: R$ 120,00'
-    expect(page).to have_content(120)
-    #expect(page).to have_content 'Seguro do Carro: R$ 120,00'
-    expect(page).not_to have_content('Familia')
-    expect(page).not_to have_content(300)
-    expect(page).not_to have_content(150)
+    expect(page).to have_css('header h1', text: 'A')
+    expect(page).to have_content 'Categoria A'
+    expect(page).to have_content 'Diária: R$ 200,00'
+    expect(page).to have_content 'Seguro do Carro: R$ 100,50'
+    expect(page).to have_content 'Seguro para terceiros: R$ 120,00'
+
+    expect(page).not_to have_content 'Categoria B'
+    expect(page).not_to have_content'Diária: R$ 300,00'
+    expect(page).not_to have_content'Seguro do Carro: R$ 150,00'
   end
 
   scenario 'and no car categories are created' do

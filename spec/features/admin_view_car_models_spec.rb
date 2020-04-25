@@ -33,7 +33,7 @@ feature 'Admin view car models' do
   scenario 'and view details' do
     # Arrange
     fiat = Manufacturer.create!(name: 'Fiat') 
-    cat_comp = CarCategory.create!(name: 'Compactos', daily_rate: 200,
+    cat_comp = CarCategory.create!(name: 'A', daily_rate: 200,
                                    car_insurance: 100.50, third_party_insurance: 120)
     cat_e = CarCategory.create!(name: 'E', daily_rate: 250,
                                    car_insurance: 200, third_party_insurance: 180)
@@ -60,13 +60,13 @@ feature 'Admin view car models' do
       expect(page).to have_content 'Ano: 2020'
       expect(page).to have_content 'Motor: 1.0'
       expect(page).to have_content 'Combustível: Flex'
-      expect(page).to have_content 'Categoria: Compactos'
-      expect(page).to have_content 'Diária: $200.00'
+      expect(page).to have_content 'Categoria: A'
+      expect(page).to have_content 'Diária: R$ 200,00'
 
       expect(page).not_to have_content 'Toro'
       expect(page).not_to have_content 'Categoria: E'
       expect(page).not_to have_content 'Combustível: Diesel'
-      expect(page).not_to have_content 'Diária: $250.00'
+      expect(page).not_to have_content 'Diária: R$ 250,00'
 
     end
   end

@@ -8,3 +8,15 @@
 <%= link_to 'Fabricantes', manufacturers_path %>
 <%= link_to 'Filiais', subsidiaries_path %>
 <%= link_to 'Modelos de Carros', car_models_path%>
+
+<h3>Playground do i18n</h3>
+
+<p><%= I18n.translate('hello') %></p>
+
+<%= I18n.localize(Time.zone.now) %>
+<br>
+<%= I18n.localize(Date.today)%>
+<br>
+<%= distance_of_time_in_words(12000) %>
+<br>
+<%= number_to_currency(990)%>

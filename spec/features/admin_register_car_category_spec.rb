@@ -22,7 +22,7 @@ feature 'Admin register car category' do
     expect(current_path).to eq car_category_path(CarCategory.last.id)
     expect(page).to have_content('Compactos')
     expect(page).to have_content(200)
-    expect(page).to have_content(100.50)
+    expect(page).to have_content 'Seguro do Carro: R$ 100,50'
     expect(page).to have_content(120)
     expect(page).to have_link('Voltar')
   end
