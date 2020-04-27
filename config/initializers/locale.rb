@@ -1,5 +1,5 @@
 # Permitted locales available for the application
-Rails.application.config.time_zone = 'Brasilia'
+Rails.application.config.time_zone = 'America/Sao_Paulo'
 
 I18n.available_locales = [:'pt-BR']
  
