@@ -14,13 +14,18 @@ class CarModelsController < ApplicationController
   end
 
   def create
-    @manufacturers = Manufacturer.all
-    @car_categories = CarCategory.all
     @car_model = CarModel.new(params.require(:car_model).permit(:name, :motorization,
-      :year, :fuel, :manufacturer_id, :car_category_id))
-    @car_model.save!
-    redirect_to @car_model
+    :year, :fuel_type, :manufacturer_id, :car_category_id))
+    if @car_model.save
+      redirect_to @car_model
+    else
+      @manufacturers = Manufacturer.all
+      @car_categories = CarCategory.all
+      render :new
+    end
   end
 
   private
+
+
 end

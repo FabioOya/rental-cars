@@ -3,6 +3,7 @@
   <dl>
     <dt>Fabricante: </dt>
     <dd><%= @car_model.manufacturer.name %></dd>
+    <dt><%= CarModel.human_attribute_name(:manufacturer) %>: </dt>
     <dt>Ano: </dt>
     <dd><%= @car_model.year %></dd>
     <dt>Motor: </dt>
@@ -13,5 +14,5 @@
     <dd><%= @car_model.car_category.name %></dd>
     <dt>Diária: </dt>
     <dd><%= number_to_currency @car_model.car_category.daily_rate %></dd> 
-</dl>
+  </dl>
 </section>
