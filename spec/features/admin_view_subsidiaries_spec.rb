@@ -2,8 +2,8 @@ require 'rails_helper'
 
 feature 'Admin view subsidiaries' do
   scenario 'succesfully' do
-    Subsidiary.create!(name: 'Uma filial', cnpj: 'Um cnpj', adress: 'Um endereço')   
-    Subsidiary.create!(name: 'Outra filial', cnpj: 'Outro cnpj', adress: 'Outro endereço')
+    Subsidiary.create!(name: 'Uma filial', cnpj: '93.188.470/0001-01', adress: 'Um endereço')   
+    Subsidiary.create!(name: 'Outra filial', cnpj: '72.054.980/0001-16', adress: 'Outro endereço')
         
     visit root_path
     click_on 'Filiais'
@@ -13,18 +13,18 @@ feature 'Admin view subsidiaries' do
   end
 
   scenario 'and view details' do
-    Subsidiary.create!(name: 'Uma filial', cnpj: 'Um cnpj', adress: 'Um endereço')
-    Subsidiary.create!(name: 'Outra filial', cnpj: 'Outro cnpj', adress: 'Outro endereço')
+    Subsidiary.create!(name: 'Uma filial', cnpj: '93.188.470/0001-01', adress: 'Um endereço')
+    Subsidiary.create!(name: 'Outra filial', cnpj: '72.054.980/0001-16', adress: 'Outro endereço')
 
     visit root_path
     click_on 'Filiais'
     click_on 'Uma filial'
 
     expect(page).to have_content('Uma filial')
-    expect(page).to have_content('Um cnpj')
+    expect(page).to have_content('93.188.470/0001-01')
     expect(page).to have_content('Um endereço')
     expect(page).not_to have_content('Outra filial')
-    expect(page).not_to have_content('Outro cnpj')
+    expect(page).not_to have_content('72.054.980/0001-16')
     expect(page).not_to have_content('Outro endereço')
   end
 
@@ -36,8 +36,8 @@ feature 'Admin view subsidiaries' do
   end
 
   scenario 'and return to home page' do
-    Subsidiary.create!(name: 'Uma filial', cnpj: 'Um cnpj', adress: 'Um endereço')
-    Subsidiary.create!(name: 'Outra filial', cnpj: 'Outro cnpj', adress: 'Outro endereço')
+    Subsidiary.create!(name: 'Uma filial', cnpj: '93.188.470/0001-01', adress: 'Um endereço')
+    Subsidiary.create!(name: 'Outra filial', cnpj: '72.054.980/0001-16', adress: 'Outro endereço')
 
     visit root_path
     click_on 'Filiais'
@@ -47,8 +47,8 @@ feature 'Admin view subsidiaries' do
   end
 
   scenario 'and return to subsidiaries page' do
-    Subsidiary.create!(name: 'Uma filial', cnpj: 'Um cnpj', adress: 'Um endereço')
-    Subsidiary.create!(name: 'Outra filial', cnpj: 'Outro cnpj', adress: 'Outro endereço')
+    Subsidiary.create!(name: 'Uma filial', cnpj: '93.188.470/0001-01', adress: 'Um endereço')
+    Subsidiary.create!(name: 'Outra filial', cnpj: '72.054.980/0001-16', adress: 'Outro endereço')
 
     visit root_path
     click_on 'Filiais'
