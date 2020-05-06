@@ -6,8 +6,11 @@ feature 'Admin view car categories' do
 
     CarCategory.create!(name: 'A', daily_rate: 50)
     CarCategory.create!(name: 'B', daily_rate: 70)
+    user = User.create!(email: 'test@test.com.br', password: '12345678')
+    
     # Act
-
+    
+    login_as user, scope: :user
     visit root_path
     click_on 'Categorias de carros'
 
@@ -31,10 +34,13 @@ feature 'Admin view car categories' do
     mobi = CarModel.create!(name: 'Mobi', year: 2020, manufacturer: manufacturer,
                           motorization: '1.0', fuel_type: 'Flex', 
                           car_category: car_category)
-
+    user = User.create!(email: 'test@test.com.br', password: '12345678')
+    
+    
     #CarCategory.create!(name: 'A', daily_rate: 200, car_insurance: 100.50, third_party_insurance: 120)
     #CarCategory.create!(name: 'B', daily_rate: 300, car_insurance: 150, third_party_insurance: 120)
-  
+    
+    login_as user, scope: :user
     visit root_path
     click_on 'Categorias de carros'
     click_on 'Categoria A'
@@ -53,6 +59,9 @@ feature 'Admin view car categories' do
   end
 
   scenario 'and no car categories are created' do
+    user = User.create!(email: 'test@test.com.br', password: '12345678')
+    
+    login_as user, scope: :user
     visit root_path
     click_on 'Categorias de carros'
 
@@ -62,7 +71,9 @@ feature 'Admin view car categories' do
   scenario 'and return to car categories page' do
     CarCategory.create!(name: 'Compactos', daily_rate: 200, car_insurance: 100.50, third_party_insurance: 120)
     CarCategory.create!(name: 'Familia', daily_rate: 300, car_insurance: 150, third_party_insurance: 120)
-
+    user = User.create!(email: 'test@test.com.br', password: '12345678')
+    
+    login_as user, scope: :user
     visit root_path
     click_on 'Categorias de carros'
     click_on 'Compactos'
@@ -86,7 +97,9 @@ feature 'Admin view car categories' do
                              motorization: '1.0', fuel_type: 'Flex', 
                              car_category: car_category_b)
 
-
+    user = User.create!(email: 'test@test.com.br', password: '12345678')
+    
+    login_as user, scope: :user
     visit root_path
     click_on 'Categorias de carros'
     click_on 'Categoria A'

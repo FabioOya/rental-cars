@@ -11,8 +11,11 @@ feature 'Admin view car models' do
                      car_category: category, motorization: '1.0', fuel_type: 'Flex')
     CarModel.create!(name: 'Ka', year: 2021, manufacturer: ford, 
                      car_category: category, motorization: '1.0', fuel_type: 'Flex')
-
+    user = User.create!(email: 'test@test.com.br', password: '12345678')
+    
+    
     # Act
+    login_as user, scope: :user
     visit root_path
     click_on 'Modelos de Carros'
 
@@ -42,8 +45,10 @@ feature 'Admin view car models' do
                     motorization: '1.0', fuel_type: 'Flex', car_category: cat_comp)
     CarModel.create!(name: 'Toro', year: 2020, manufacturer: fiat,
                     motorization: '2.0 Turbo', fuel_type: 'Diesel', car_category: cat_comp)
-
+    user = User.create!(email: 'test@test.com.br', password: '12345678')
+    
     # Act
+    login_as user, scope: :user
     visit root_path
     click_on 'Modelos de Carros'
     #save_page # debug / depuração

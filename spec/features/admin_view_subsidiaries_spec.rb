@@ -4,7 +4,9 @@ feature 'Admin view subsidiaries' do
   scenario 'succesfully' do
     Subsidiary.create!(name: 'Uma filial', cnpj: '93.188.470/0001-01', adress: 'Um endereço')   
     Subsidiary.create!(name: 'Outra filial', cnpj: '72.054.980/0001-16', adress: 'Outro endereço')
-        
+    user = User.create!(email: 'test@test.com.br', password: '12345678')
+     
+    login_as user, scope: :user
     visit root_path
     click_on 'Filiais'
 
@@ -15,7 +17,9 @@ feature 'Admin view subsidiaries' do
   scenario 'and view details' do
     Subsidiary.create!(name: 'Uma filial', cnpj: '93.188.470/0001-01', adress: 'Um endereço')
     Subsidiary.create!(name: 'Outra filial', cnpj: '72.054.980/0001-16', adress: 'Outro endereço')
-
+    user = User.create!(email: 'test@test.com.br', password: '12345678')
+    
+    login_as user, scope: :user
     visit root_path
     click_on 'Filiais'
     click_on 'Uma filial'
@@ -29,6 +33,9 @@ feature 'Admin view subsidiaries' do
   end
 
   scenario 'and no subsidiaries are created' do
+    user = User.create!(email: 'test@test.com.br', password: '12345678')
+    
+    login_as user, scope: :user
     visit root_path
     click_on 'Filiais'
         
@@ -38,7 +45,9 @@ feature 'Admin view subsidiaries' do
   scenario 'and return to home page' do
     Subsidiary.create!(name: 'Uma filial', cnpj: '93.188.470/0001-01', adress: 'Um endereço')
     Subsidiary.create!(name: 'Outra filial', cnpj: '72.054.980/0001-16', adress: 'Outro endereço')
-
+    user = User.create!(email: 'test@test.com.br', password: '12345678')
+    
+    login_as user, scope: :user
     visit root_path
     click_on 'Filiais'
     click_on 'Voltar'
@@ -49,7 +58,9 @@ feature 'Admin view subsidiaries' do
   scenario 'and return to subsidiaries page' do
     Subsidiary.create!(name: 'Uma filial', cnpj: '93.188.470/0001-01', adress: 'Um endereço')
     Subsidiary.create!(name: 'Outra filial', cnpj: '72.054.980/0001-16', adress: 'Outro endereço')
-
+    user = User.create!(email: 'test@test.com.br', password: '12345678')
+    
+    login_as user, scope: :user
     visit root_path
     click_on 'Filiais'
     click_on 'Uma filial'
