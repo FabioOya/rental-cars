@@ -16,4 +16,9 @@ class CustomersController < ApplicationController
     @customer.save
     redirect_to customer_path(Customer.last.id)
   end
+
+  def search
+    @customers = Customer.where(name: params[:q])
+    render :index
+  end
 end
