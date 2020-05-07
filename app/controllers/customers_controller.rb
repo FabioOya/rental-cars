@@ -18,7 +18,8 @@ class CustomersController < ApplicationController
   end
 
   def search
-    @customers = Customer.where(name: params[:q])
+    #@customers = Customer.where('name LIKE ?', "%#{params[:q]}%")
+    @customers = Customer.search(params[:q])
     render :index
   end
 end
