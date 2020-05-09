@@ -1,4 +1,10 @@
-# README
+# Sistema de Aluguel de Carros 
+
+### Dependencias
+
+- Rails 6.0.2.2
+- Ruby 2.6.3p62
+
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
