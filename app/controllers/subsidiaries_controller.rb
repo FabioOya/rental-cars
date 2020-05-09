@@ -1,4 +1,8 @@
 class SubsidiariesController < ApplicationController
+  #before_action :authenticate_user!
+  #before_action :authorize_admin
+  #before_action :set_subsidiary, only: %i[show edit update]
+
   def index
     @subsidiaries = Subsidiary.all
   end
@@ -13,7 +17,16 @@ class SubsidiariesController < ApplicationController
 
   def create
     @subsidiary = Subsidiary.new(params.require(:subsidiary).permit(:name, :cnpj, :adress))
-    @subsidiary.save
-    redirect_to subsidiary_path(Subsidiary.last.id)
+    return redirect_to @subsidiary if @subsidiary.save
+
+    render :new
   end
+
+  # def set_subsidiary
+  #   @subsidiary = Subisidiary.find(params[:id])
+  # end
+
+  # def authorize_admin
+  #   redirect_to root_path, notice: 'Não autorizado' unless current_user.admin?
+  # end
 end

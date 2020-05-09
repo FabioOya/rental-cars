@@ -28,4 +28,9 @@ class RentalsController < ApplicationController
     #   render :index
     # end
   end
+
+  def show
+    @rental = Rental.find(params[:id])
+  end
+
 end
