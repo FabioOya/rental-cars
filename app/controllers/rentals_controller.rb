@@ -16,6 +16,7 @@ class RentalsController < ApplicationController
                                                            :end_date, 
                                                            :customer_id, 
                                                            :car_category_id))
+    RentalsMailer.scheduled(@rental).deliver_now
     redirect_to rentals_path
   end
 
